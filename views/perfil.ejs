@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('head')%>
+    <body>
+        <header>
+            <%- include('navbar')%>
+        </header>
+        <div class="cuerpoPerfil">
+            <%- include('dashboardPerfil') %>
+            <div>
+                <h2>Datos Personales</h2>
+                <form action="/perfil/modificar" method="post" class="datosPerfil">
+                    <label for="nombre">Nombre: </label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="<%= user.nombre %>">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Cambiar datos</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

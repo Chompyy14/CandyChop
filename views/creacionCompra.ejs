@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('head') %>
+<body>
+    <header>
+        <%- include('navbar') %>
+    </header>
+    <div class="container">
+        <div class="subcontainer-check">
+            <h2 class="titulo">Selección de Dirección:</h2>
+            <br>
+            <form action="/seleccionarDireccion" method="post" class="formulario" onsubmit="return validarFormulario()">
+                <ul>
+                    <% if (direcciones && direcciones.length > 0) { %>
+                        <% direcciones.forEach((direccion) => { %>
+                            <li style="list-style: none; font-size: 20px;">
+                                <label>
+                                    <input type="radio" name="direccion_envio" value="<%= direccion.id %>">
+                                    <strong>Dirección:</strong>
+                                    <%= direccion.calle %>, <%= direccion.numero_exterior %>, <%= direccion.ciudad %>, <%= direccion.colonia %>, <%= direccion.cp %>
+                                </label>
+                            </li>
+                        <% }); %>
+                    <% } else { %>
+                        <li>No se encontraron direcciones para este usuario.</li>
+                    <% } %>
+                </ul>
+                <button type="submit" class="btn btn-primary" id="botonSelecDir" disabled>Seleccionar Dirección</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validarFormulario() {
+            var opcionesSeleccionadas = document.querySelector('input[name="direccion_envio"]:checked');
+            if (!opcionesSeleccionadas) {
+                alert("Por favor, seleccione una dirección.");
+                return false; // Evita que el formulario se envíe
+            }
+            return true; // Permite que el formulario se envíe
+        }
+
+        document.addEventListener('change', function () {
+            var botonSelecDir = document.getElementById('botonSelecDir');
+            var opcionesSeleccionadas = document.querySelector('input[name="direccion_envio"]:checked');
+            botonSelecDir.disabled = !opcionesSeleccionadas;
+        });
+    </script>
+</body>
+</html>

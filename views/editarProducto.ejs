@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('head') %>
+<body>
+    <header>
+        <%- include('navbar') %>
+    </header>
+    <div class="container">
+        <h1 class="titulo">Editar Producto</h1>
+        <h1 class="titulo"><%= product.nombre %></h1>
+        <form action="/productos/<%= product.id %>/editar" method="POST" class="formulario">
+
+            <!-- Nombre -->
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="<%= product.nombre %>">
+
+            <!-- Descripción -->
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion"><%= product.descripcion %></textarea>
+
+            <!-- Stock -->
+            <label for="stock">Stock:</label>
+            <input type="number" id="stock" name="stock" value="<%= product.stock %>">
+
+            <!-- Precio -->
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" value="<%= product.precio %>">
+
+            <!-- Marca (modificado similar al tipo de usuario) -->
+            <div class="form-group">
+                <label for="marca" class="subtext">Marca:</label>
+                <select id="marca" name="marca" class="form-control">
+                    <option value="">Seleccionar marca existente</option>
+                    <% marcas.forEach(function(marca) { %>
+                        <option value="<%= marca.nombre %>" <%= product.marca === marca.nombre ? 'selected' : '' %>><%= marca.nombre %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Categoría (añadida similar al tipo de usuario) -->
+            <div class="form-group">
+                <label for="categoria" class="subtext">Categoria:</label>
+                <select id="categoria" name="categoria" class="form-control">
+                    <option value="">Seleccionar categoria existente</option>
+                    <% categorias.forEach(function(categoria) { %>
+                        <option value="<%= categoria.nombre %>" <%= product.categoria === categoria.nombre ? 'selected' : '' %>><%= categoria.nombre %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <!-- Botón para modificar -->
+            <button type="submit" class="btn btn-warning" style="width: 100%;">Modificar</button>
+        </form>
+    </div>
+</body>
+</html>

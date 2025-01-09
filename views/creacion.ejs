@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('head') %>
+    <body>
+        <!--Navbar start-->
+        <header>
+            <%- include('navbar') %>
+        </header>
+        <!--End of Navbar-->
+        <!--Creacion de cuenta-->
+        <h1 class="titulo">Registro</h1>
+        <form class="formulario" action="/registro" method="POST"> <!--Encargado de subir al usuario-->
+            <div class="form-group">
+                <label for="exampleInputName">Nombre y Apellidos</label>
+                <input type="name" class="form-control" id="nombre" name="nombre" aria-describedby="nameHelp" placeholder="Nombre Apellido">
+              </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Correo Electronico</label>
+              <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" placeholder="example@example.com">
+              <small id="emailHelp" class="form-text text-muted"><center>Nunca compartiremos tus datos personales con nadie</center></small>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="contrasenia" name="contrasenia" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Confirmar Password</label>
+                <input type="password" class="form-control" id="confirmar_contrasenia" name="confirmar_contrasenia" placeholder="Password">
+            </div>
+            <!-- Selector de tipo de usuario solo para administradores -->
+            <% if (userRole === 'administrador') { %>
+              <div class="form-group">
+                  <label for="exampleInputType">Tipo de Usuario</label>
+                  <select class="form-control" id="tipo" name="tipo">
+                      <option value="administrador">Administrador</option>
+                      <option value="editor">Editor</option>
+                      <option value="cliente">Cliente</option>
+                  </select>
+              </div>
+            <% } %>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <p style="text-align: center;"><a class="link-opacity-75" href="/login">Ya tienes una cuenta?</a></p>
+        <!--End of form-->
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('head') %>
+<body>
+    <header>
+        <%- include('navbar') %>
+    </header>
+    <div class="cuerpoPerfil">
+        <%- include('dashboardPerfil') %>
+        <div>
+            <h2>Compras Realizadas (<%= compras.length %>)</h2>
+            <br>
+            <% if (compras.length <= 0) { %>
+                <h5>Sin compras realizadas</h5>
+            <% } else { %>
+                <% compras.forEach((compra) => { %>
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center;">Compra realizada: <%= compra.fecha_compra %></h5>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% compra.productos.forEach((producto) => { %>
+                                        <tr>
+                                            <td><%= producto.nombre %></td>
+                                            <td>$<%= producto.precio %></td>
+                                            <td><%= producto.cantidad %></td>
+                                            <td>$<%= producto.cantidad * producto.precio %></td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-end">Total:</td>
+                                        <td>$<%= compra.total %></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <p class="card-text" style="text-align: center;">
+                                Dirección: <%= compra.calle %> <%= compra.numero_exterior %>, <%= compra.colonia %>, <%= compra.ciudad %>, <%= compra.cp %>
+                            </p>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,507 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    /*background-color: #fdecda;*/
+}
+
+body {
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.agrupar {
+    width: auto;
+    min-width: 600px;
+}
+
+/*Start of Navbar styles*/
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.navbarM {
+    width: 100%;
+	max-width: 900px;
+	font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    border-top: #000000 1px solid;
+    margin-top: 25px;;
+}
+
+.div-navbar {
+    margin-top:25px;
+}
+
+.menu-horizontal {
+	list-style: none;
+	display: flex;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+}
+
+.menu-horizontal > li > a {
+	padding: 1em;
+	color: #000000;
+	text-decoration: none;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.menu-horizontal > li:hover {
+	background-color: rgb(218, 214, 214);
+    border-radius: 8px;
+}
+
+.menu-vertical {
+    display: none;
+    padding-left: 25px;
+    padding-right: 22.5px;
+	list-style: none;
+    margin: 0;
+	background-color: rgb(218, 214, 214);
+}
+
+.menu-horizontal li:hover .menu-vertical {
+	display: block;
+    position: absolute;
+}
+
+.menu-vertical li:hover {
+	background-color: rgb(189, 183, 183);
+}
+
+.menu-vertical li a {
+	display: block;
+	color: #000000;
+	text-decoration: none;
+}
+
+/*End of Navbar styles*/
+
+.titulo {
+    font-size: 45px;
+    text-align: center;
+    color: #000000;
+    margin: auto;
+}
+
+.div-carrousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carrousel {
+    width: 95%;
+    max-width: 120em;
+    overflow-x: hidden;
+}
+
+.slider-box {
+    width: 200%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all .5s ease;
+    transform: translateX(0%);
+}
+
+.imagen {
+    width: calc(100%/2);
+}
+
+.puntos {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+}
+
+.punto {
+    width: 1em;
+    height: 1em;
+    margin: 5px;
+    border-radius: 50%;
+    border: #000000 1px solid;
+    background-color: #ffffff;
+}
+
+.punto.active {
+    background-color: rgb(0, 0, 0);
+}
+
+/*End of Carrousel*/
+
+.div-compromiso {
+    padding: auto;
+}
+
+.div-compromiso > h2 {
+    font-size: 35px;
+    text-align: center;
+    color: #000000;
+}
+
+.compromiso {
+    display: flex;
+    justify-content: space-between;
+}
+
+.columna-envios {
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+}
+
+.columna-envios > h3 {
+    font-size: 25px;
+    text-align: center;;
+    color: #000000;
+}
+
+.columna-envios > img {
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.columna-envios > img:hover {
+    transform: scale(1.4);
+    transition: all 0.5s ease-in-out;
+}
+
+/*End of Compromisos*/
+
+.div-instagram {
+    margin-bottom: 50px;
+}
+
+.contenedor-instagram {
+    display: flex;
+    justify-content: center;
+    height: 380px;
+}
+
+.frame-instagram {
+    border: #000000 2px solid;
+    border-radius: 50px;
+    box-shadow: #000000 5px 5px;
+}
+
+/*End of instagram*/
+
+.columnas {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.lista-footer {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+}
+
+.div-terminos {
+    text-align: center;
+    font-size: small;
+    background-color: rgb(237, 243, 243);
+}
+
+.div-boot {
+    margin-top: 35px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    border: #000000 2px solid;
+    border-radius: 10px;
+}
+
+.form-control {
+    display: block;
+    margin: 0 auto;
+    width: 20%;
+}
+
+form > h1 {
+    margin-top:40px;
+}
+
+small {
+    font-size: 10px;
+}
+
+.formulario {
+    margin: 0 auto;
+    width: 400px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.formulario > button {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.formulario > p {
+    margin: 0 auto;
+    margin-top: 14px;
+    text-align: center;
+}
+
+footer {
+    padding: 1em 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+.contenedor-agregar {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.agregar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 260px;
+    gap: 10px;
+}
+
+.subtext {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.imagenproducto {
+    height: 500px;
+    width: 500px;
+    margin: auto;
+}
+
+.producto {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.producto > p {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.producto > button {
+    width: 160px;
+    margin: auto;
+}
+
+.conocenos {
+    margin: 100px;
+    display: grid;
+    grid-template-columns: 500px 1200px;
+}
+
+.subcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    user-select: none;
+}
+
+.subcontainer > h3 {
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.subcontainer > h3:hover {
+    transform: scale(1.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.subcontainer > ul {
+    display: flex;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.subcontainer > ul > li {
+    list-style: none;
+    margin: 25px;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.subcontainer > ul > li:hover {
+    transform: scale(1.5);
+    transition: all 0.5s ease-in-out;
+}
+
+.subcontainer > img {
+    width: 800px;
+    border-radius: 20px;
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+.subcontainer > img:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+#imagenValor {
+    width:100px;
+    border-radius: 20px;
+    transform: scale(0.3);
+    transition: all 0.5s ease-in-out;
+}
+
+.cuerpoPerfil {
+    display: grid;
+    grid-template-columns: 500px auto;
+    margin-top: 40px;
+    margin: 20px;
+    margin-right: 500px;
+}
+
+.lateralmenu {
+    list-style: none;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+}
+
+.submenu > li {
+    list-style: none;
+}
+
+.submenu > li:hover {
+    background-color: rgb(212, 207, 207);
+    border-radius: 10px;
+}
+
+.submenu > li > a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.activadorSub:hover .submenu {
+    display: block;
+}
+
+.container {
+    margin-top: 40px;
+}
+
+.botonesDireccion {
+    display: flex;
+    justify-content: center;
+}
+
+#botonAgregar {
+    display: flex;
+    justify-content: center;
+}
+
+#botonAgregar > a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#imagenProductos {
+    transform: scale(1);
+    transition: all 0.5s ease-in-out;
+}
+
+#imagenProductos:hover {
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+#containerConocenos {
+    margin-left: 0px;
+}
+
+.carritoVista {
+    display: grid;
+    grid-template-columns: 500px auto;
+    justify-content: space-around;
+}
+
+.carritoVista > img {
+    width: 200px;
+}
+
+.carritoVista > li {
+    list-style: none;
+}
+
+.listaProductosComprados{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.si {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.productos-comprados > p {
+    border: #000000 2px solid;
+    margin: 0px;
+}
+
+.subcontainer-check {
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.direccionCompra {
+    font-size: 30px;
+    text-align: center;
+}
+
+#cambiarDirCheck {
+    margin-bottom: 50px;
+}
+
+#btnCheckout {
+    width: 200px;
+}
+
+#botonUSUARIO {
+    width: 90px;
+}
+
+.div-marcas {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+}

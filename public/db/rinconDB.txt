@@ -1,0 +1,139 @@
+CREATE DATABASE IF NOT EXISTS rincon;
+USE rincon;
+
+DROP TABLE IF EXISTS carrito;
+
+CREATE TABLE IF NOT EXISTS carrito (
+  id int NOT NULL AUTO_INCREMENT,
+  id_usuario int NOT NULL,
+  id_producto int NOT NULL,
+  cantidad int NOT NULL,
+  fecha_creacion timestamp NOT NULL,
+  PRIMARY KEY (id),
+  KEY id_usuario (id_usuario),
+  KEY id_producto (id_producto)
+);
+
+DROP TABLE IF EXISTS categorias;
+
+CREATE TABLE IF NOT EXISTS categorias (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(64) DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY nombre (nombre)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO categorias (id, nombre) VALUES
+(1, 'Chicloso'),
+(2, 'Macizo'),
+(3, 'Otro Tipo'),
+(4, 'Gomita'),
+(5, 'Chocolate');
+
+DROP TABLE IF EXISTS compras;
+
+CREATE TABLE IF NOT EXISTS compras (
+  id int NOT NULL AUTO_INCREMENT,
+  id_usuario int DEFAULT NULL,
+  fecha_compra date DEFAULT NULL,
+  total decimal(10,2) DEFAULT NULL,
+  id_direccion int DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY id_usuario (id_usuario),
+  KEY fk_compras_direccion (id_direccion)
+);
+
+DROP TABLE IF EXISTS detalles_compra;
+
+CREATE TABLE IF NOT EXISTS detalles_compra (
+  id int NOT NULL AUTO_INCREMENT,
+  id_compra int DEFAULT NULL,
+  id_producto int DEFAULT NULL,
+  cantidad_comprada int DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY id_compra (id_compra),
+  KEY id_producto (id_producto)
+);
+
+DROP TABLE IF EXISTS direcciones;
+
+CREATE TABLE IF NOT EXISTS direcciones (
+  id int NOT NULL AUTO_INCREMENT,
+  id_usuario int DEFAULT NULL,
+  calle varchar(64) DEFAULT NULL,
+  numero_exterior varchar(10) DEFAULT NULL,
+  ciudad varchar(64) DEFAULT NULL,
+  cp varchar(10) DEFAULT NULL,
+  colonia varchar(64) DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY id_usuario (id_usuario)
+);
+
+DROP TABLE IF EXISTS marcas;
+
+CREATE TABLE IF NOT EXISTS marcas (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(64) DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY nombre (nombre)
+);
+
+INSERT INTO marcas (id, nombre) VALUES
+(1, 'De la Rosa'),
+(2, 'Dulces Vero'),
+(3, 'Ricolino'),
+(4, 'Hersheys'),
+(5, 'Kinder'),
+
+DROP TABLE IF EXISTS productos;
+
+CREATE TABLE IF NOT EXISTS productos (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(64) DEFAULT NULL,
+  categoria varchar(64) DEFAULT NULL,
+  stock int DEFAULT NULL,
+  descripcion varchar(64) DEFAULT NULL,
+  imagen varchar(255) DEFAULT NULL,
+  precio decimal(10,2) DEFAULT NULL,
+  marca varchar(64) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO productos (id, nombre, categoria, stock, descripcion, imagen, precio, marca) VALUES
+(1, 'Mazapan', 'Otro Tipo', 45, 'Dulce hecho a base de almendras molidas y azúcar, con una textura suave y un sabor dulce a almendras y nueces', 'images/dulces/mazapan.png', '70.00', 'De la Rosa'),
+(2, 'Aciduladito', 'Chicloso', 50, 'Caramelos suaves con un toque acidulado', 'images/dulces/aciduladito.jpg', '70.00', 'De la Rosa'),
+(3, 'Gummy Pop', 'Gomita', 74, 'Gomita en forma de llave de varios sabores', 'images/dulces/gummypop.png', '65.00', 'De la Rosa'),
+(4, 'Rellerindos', 'Macizo', 192, 'Dulce macizo a base de tamarindo relleno', 'images/dulces/rellerindo.jpg', '80.00', 'Dulces Vero'),
+(5, 'Pica Fresa', 'Chicloso', 150, 'Dulce chicloso sabor fresa picosa', 'images/dulces/picafresa.jpg', '90.00', 'Dulces Vero'),
+(6, 'Vero Mix', 'Otro Tipo', 30, 'Surtido de dulces de la marca "Dulces Vero"', 'images/dulces/veromix.jpg', '14.50', 'Dulces Vero'),
+(7, 'Panditas', 'Gomita', 20, 'Gomita de varios sabores en forma de panda', 'images/dulces/panditas.jpg', '100.00', 'Ricolino'),
+(8, 'Kranky', 'Chocolate', 72, 'Hojuela de maiz cubierta de chocolate', 'images/dulces/kranky.jpg', '102.00', 'Ricolino'),
+(9, 'Bubulubu', 'Chocolate', 40, 'Chocolate relleno de bombón y jalea de fresa', 'images/dulces/bubulubu.jpg', '97.00', 'Ricolino'),
+(10, 'Cookies & Cream', 'Chocolate', 60, 'Chocolate sabor cookies & cream', 'images/dulces/cookies.jpg', '300.00', 'Hersheys'),
+(11, 'Dark', 'Chocolate', 45, 'Chocolate amargo', 'images/dulces/dark.jpg', '250.00', 'Hersheys'),
+(12, 'Almonds', 'Chocolate', 90, 'Chocolate combinado con almendras', 'images/dulces/almond.jpg', '280.00', 'Hersheys'),
+(13, 'Nugs', 'Chocolate', 70, 'Chocolate combinado con almendras', 'images/dulces/nugs.jpg', '67.00', 'De la Rosa'),
+(14, 'Delice', 'Chocolate', 167, 'Panquesito cubierto de chocolate', 'images/dulces/delice.jpg', '179.00', 'Kinder'),
+(15, 'Chocolate', 'Chocolate', 140, 'Chocolate blanco cubierto de un chocolate de leche', 'images/dulces/kinder.jpg', '140.00', 'Kinder'),
+(16, 'Sorpresa', 'Chocolate', 100, 'Chocolate en forma de huevo con juguete dentro', 'images/dulces/sorpresa.jpeg', '200.00', 'Kinder'),
+(17, 'Paquete Diversión', 'Otro Tipo', 20, 'Surtido de dulces de la marca "Ricolino"', 'images/dulces/diversion.jpg', '175.00', 'Ricolino'),
+(18, 'Tarrito', 'Macizo', 100, 'Dulce en forma de tarro de cerveza', 'images/dulces/tarrito.jpg', '95.00', 'Dulces Vero');
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE IF NOT EXISTS users (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(64) DEFAULT NULL,
+  correo varchar(64) DEFAULT NULL,
+  tipo enum('administrador','editor','cliente') DEFAULT NULL,
+  contrasenia varchar(255) DEFAULT NULL,
+  salt varchar(64) DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY correo (correo)
+);
+
+INSERT INTO users (id, nombre, correo, tipo, contrasenia, salt) VALUES
+(19, 'Mariano Peña Romero', 'mariano.pena15@gmail.com', 'administrador', '1070782220a60f7d5d3177114e400c52eba418260734f38c117d7a6415ef6e0c', '2ba1e14c0e9bbf77d7447881371cb1a4'),
+(21, 'Tania', 'tann07lee04@gmail.com', 'cliente', '0e2d7e5008063fe7edd958f19ecee9e5a7031acc7093a0340a5ebbb3617fd0fa', 'e223246e25b04a8b402884c4f19645ac'),
+(26, 'Jorge Ramirez Lopez', 'antonio33@gmail.com', 'editor', '5a3a1c2408cd199f8c32994f35091c142194cb3ed4f36ee44409be10846f653b', '467be222a31c5bd1d39d7f240632883a'),
+(27, 'Mariojoestar', 'onairam15@hotmail.com', 'cliente', '93e4c7bc4981e333049c190b2d33b72a6f78de53414e112679ebe9a950e2709e', '1ae56fecd33d77fc9223fc2e94501012');

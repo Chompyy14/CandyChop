@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('head') %>
+    <div class="agrupar">
+        <body>
+            <!--Navbar start-->
+            <header>
+              <%- include('navbar') %>
+            </header>
+            <!--End of Navbar-->
+            <br>
+            <div class="div-boot">
+                <div id="carrousel-boostrap" class="carousel slide">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <a href="/">
+                            <img src="images/dulces.jpg" class="d-block w-100">
+                        </a>
+                      </div>
+                      <div class="carousel-item">
+                        <a href="/productos">
+                            <img src="images/dulces2.jpg" class="d-block w-100">
+                        </a>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carrousel-boostrap" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carrousel-boostrap" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+            <div class="div-compromiso">
+                <h2>Nuestro Compromiso</h2>
+                <div class="compromiso">
+                    <div class="columna-envios">
+                        <img src="images/icono_envio.png" alt="compromiso1">
+                        <h3 class="subtitulo">Envíos seguros</h3>
+                        <p class="parrafo">Manejamos distintas compañías logísticas para que tú elijas cuál usar.</p>
+                    </div>
+                    <div class="columna-envios">
+                        <img src="images/icono_pago.png" alt="compromiso2">
+                        <h3 class="subtitulo">Métodos de Pago</h3>
+                        <p class="parrafo">Utiliza tu cuenta de PayPal para un pago seguro.</p>
+                    </div>
+                    <div class="columna-envios">
+                        <img src="images/icono_atencion.png" alt="compromiso3">
+                        <h3 class="subtitulo">Atención al cliente</h3>
+                        <p class="parrafo">Contamos con distintos medios para que puedas expresar tus inquietudes, no dudes en contactarnos.</p>
+                    </div>
+                </div>
+            </div>                        
+        </body>
+    </div>
+</html>

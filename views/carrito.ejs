@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('head') %>
+    <body>
+        <header>
+            <%- include('navbar') %>
+        </header>
+        <div class="container">
+            <h1 class="titulo">Carrito de Compras</h1>
+            <br>
+            <ul>
+                <% let totalPagar = 0; %>
+                <% carrito.forEach(producto => { %>
+                    <div class="carritoVista">
+                        <li>
+                            Producto: <%= producto.nombre %><br>
+                            <form id="form<%= producto.id %>" action="/actualizarCantidadEnCarrito/<%= producto.id %>" method="post">
+                                Cantidad: <select name="cantidad" onchange="submitForm('<%= producto.id %>')">
+                                    <% for (let i = 1; i <= producto.stock; i++) { %>
+                                        <option value="<%= i %>"<%= i === producto.cantidad ? ' selected' : '' %>><%= i %></option>
+                                    <% } %>
+                                </select>
+                                <p>Precio unitario: $<%= producto.precio %><p>
+                                <p style="font-weight: bold;">Subtotal: $<%= producto.precio * producto.cantidad %></p>
+                                <% totalPagar += producto.precio * producto.cantidad; %>
+                                <!--<button type="submit" class="btn btn-primary">Actualizar Cantidad</button>-->
+                            </form>
+                            <form action="/eliminarDelCarrito/<%= producto.id %>" method="post">
+                                <button type="submit" class="btn btn-danger">Eliminar del Carrito</button>
+                            </form>
+                        </li>
+                        <img src="<%= producto.imagen %>" alt="Carrito">
+                    </div>
+                    <br>
+                <% }) %>
+            </ul>
+            <% if (carrito.length > 0) { %>
+                <div style="text-align: center;"> <!-- Agrega un div para centrar -->
+                    <a href="/Checkout" class="btn btn-primary" id="btnCheckout">
+                        Realizar Compra - Total: $<%= totalPagar.toFixed(2) %>
+                    </a>
+                </div>
+            <% } else { %>
+                <p style="text-align: center;">No hay nada en el carrito</p>
+            <% } %>
+        </div>
+
+        <script>
+            function submitForm(productId) {
+                document.getElementById('form' + productId).submit();
+            }
+        </script>
+    </body>
+</html>

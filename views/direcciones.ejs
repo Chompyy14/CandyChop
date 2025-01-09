@@ -1,0 +1,42 @@
+<!-- direcciones.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('head')%>
+    <body>
+        <header>
+            <%- include('navbar')%>
+        </header>
+        <br>
+        <div class="botonesDireccion">
+            <button class="btn btn-primary" id="botonAgregar"><a href="/perfil/direcciones/agregar">Agregar Dirección</a></button>
+        </div>
+        <div class="cuerpoPerfil">
+            <%- include('dashboardPerfil') %>
+            <div>
+                <h2>Direcciones Guardadas (<%= direcciones.length%>)</h2>
+                <% if (direcciones.length <= 0) { %>
+                    <br>
+                    <h5>Sin direcciones guardadas</h5>
+                <% } else { %>
+                    <ul>
+                        <% direcciones.forEach((direccion) => { %>
+                            <li>
+                                <%= direccion.calle %>, <%= direccion.numero_exterior %>, <%= direccion.colonia %>, <%= direccion.ciudad %>, <%= direccion.cp %>
+                                <a href="/perfil/direcciones/modificar/<%= direccion.id_usuario %>/<%= direccion.id %>">Modificar</a>
+                                <form action="/perfil/direcciones/eliminar" method="post" onsubmit="return confirmDelete()">
+                                    <input type="hidden" name="direccionId" value="<%= direccion.id %>">
+                                    <button type="submit" class="btn btn-primary">Eliminar</button>
+                                </form>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+            </div>
+        </div>
+        <script>
+            function confirmDelete() {
+                return confirm('¿Estás seguro de que deseas eliminar esta dirección?');
+            }
+        </script>
+    </body>
+</html>
